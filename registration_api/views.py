@@ -15,7 +15,7 @@ VALID_USER_FIELDS = utils.get_valid_user_fields()
 @api_view(['POST'])
 @permission_classes((AllowAny, ))
 def register(request):
-    serialized = UserSerializer(data=request.POST)
+    serialized = UserSerializer(data=request.data)
     if serialized.is_valid():
         user_data = utils.get_user_data(request.POST)
         utils.create_inactive_user(**user_data)
